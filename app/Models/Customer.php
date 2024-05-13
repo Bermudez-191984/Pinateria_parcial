@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Customer extends Model
 {
     use HasFactory;
-    protected $table = "client";
-
-    protected $fillable = ['name', 'email', 'address', 'phone'];
+    protected $table = "customers";
+    protected $fillable = ['firtname','secondname','lastname','second lastname','age','email'];
     protected $guarded = ['id','created_at', 'updated_at'];
 
     public function orders()
- {
- return $this->hasMany(Order::class);
- }
+    {
+    return $this->hasMany(_Order::class);
+    }
 }
