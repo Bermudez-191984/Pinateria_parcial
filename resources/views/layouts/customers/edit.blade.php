@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Editar productos')
+@section('title','Editar Cliente')
 
 @section('content')
 
@@ -59,7 +59,7 @@
                                             <input type="text" class="form-control" name="email" placeholder=" email "
                                                 autocomplete="off" value="{{ $customer->email }}">
 
-                                            <label class="control-label">Img <strong
+                                            <!-- <label class="control-label">Img <strong
                                                     style="color:red;"></strong></label>
                                             <div> @if($customer->image!=null)
                                                 <p><img class="img-responsive img-thumbnail"
@@ -79,7 +79,7 @@
                                                     </div>
                                                 </div>
 
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <input type="hidden" class="form-control" name="registradopor"
