@@ -5,7 +5,8 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake rounded-circle" src="{{asset('backend/dist/img/iconohome.jpg')}}" height="250" width="250">
+        <img class="animation__shake rounded-circle" src="{{asset('backend/dist/img/iconohome.jpg')}}" height="250"
+            width="250">
     </div>
 </div>
 <ul class="tabs">
@@ -62,169 +63,196 @@
             <h3>Contactos</h3>
             <p>
                 +57 3142634586
+                @piñateria_mundo_color
             </p>
         </div>
     </div>
 
+    <button class="btn-hover" onclick="window.location.href='{{ route('calendar') }}'">Eventos</button>
 
 </div>
 
+
+
 <style>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+.btn-hover {
+    background-color: #d946ef;
+    /* Color inicial del botón */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    /* Suaviza la transición del color */
+    position: fixed;
+    /* Posición fija en la pantalla */
+    bottom: 10px;
+    /* Distancia desde el borde inferior */
+    right: 10px;
+    /* Distancia desde el borde derecho */
+}
 
-    :root {
-        --color-primary: #FADAF8;
-        --color-background: #FFF5F7;
-        --color-text: #bf43ba;
-        --color-accent1: #8FCFFF;
-        --color-accent2: #8FCFFF;
-        --color-border: #bf43ba;
+.btn-hover:hover {
+    background-color: red;
+    /* Color del botón al pasar el ratón */
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+:root {
+    --color-primary: #FADAF8;
+    --color-background: #FFF5F7;
+    --color-text: #bf43ba;
+    --color-accent1: #8FCFFF;
+    --color-accent2: #8FCFFF;
+    --color-border: #bf43ba;
+}
+
+.rounded-circle {
+    border-radius: 50%;
+}
+
+.preloader img {
+    width: 250px;
+    height: 250px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-background);
+    overflow-x: clip;
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-text);
+}
+
+ul {
+    list-style: none;
+}
+
+.tabs {
+    width: 80%;
+    height: 100px;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    box-shadow: 3px 3px 9px var(--color-border), -3px -3px 9px #FFFFFF;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.tabs li {
+    background: var(--color-primary);
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.tabs li:hover {
+    background: linear-gradient(145deg, var(--color-primary), var(--color-accent1));
+    box-shadow: 10px 10px 19px var(--color-border), -10px -10px 19px #262a2e;
+    color: #FFFFFF;
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.active {
+    background: linear-gradient(145deg, var(--color-primary), var(--color-accent2));
+    box-shadow: 10px 10px 19px var(--color-border), -10px -10px 19px black;
+    color: black !important;
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.contents {
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.box {
+    gap: 20px;
+    background: var(--color-primary);
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    animation: moving 1s ease;
+}
+
+.box img {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.box h3 {
+    color: #bf43ba;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.box p {
+    color: black;
+    opacity: 0.8;
+    font-size: 1rem;
+}
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
+
+@keyframes moving {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
     }
 
-    .rounded-circle {
-        border-radius: 50%;
+    to {
+        transform: translateX(0px);
+        opacity: 1;
     }
-
-    .preloader img {
-        width: 250px;
-        height: 250px;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        background-color: var(--color-background);
-        overflow-x: clip;
-        font-family: 'Poppins', sans-serif;
-        color: var(--color-text);
-    }
-
-    ul {
-        list-style: none;
-    }
-
-    .tabs {
-        width: 80%;
-        height: 100px;
-        margin: auto;
-        margin-top: 50px;
-        display: flex;
-        align-items: center;
-        box-shadow: 3px 3px 9px var(--color-border), -3px -3px 9px #FFFFFF;
-        overflow: hidden;
-        border-radius: 10px;
-    }
-
-    .tabs li {
-        background: var(--color-primary);
-        width: 25%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--color-text);
-        transition: 0.5s;
-        cursor: pointer;
-    }
-
-    .tabs li:hover {
-        background: linear-gradient(145deg, var(--color-primary), var(--color-accent1));
-        box-shadow: 10px 10px 19px var(--color-border), -10px -10px 19px #262a2e;
-        color: #FFFFFF;
-        position: relative;
-        z-index: 1;
-        border-radius: 10px;
-    }
-
-    .active {
-        background: linear-gradient(145deg, var(--color-primary), var(--color-accent2));
-        box-shadow: 10px 10px 19px var(--color-border), -10px -10px 19px black;
-        color: black!important;
-        position: relative;
-        z-index: 1;
-        border-radius: 10px;
-    }
-
-    .contents {
-        width: 80%;
-        margin: auto;
-        margin-top: 50px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 30px;
-    }
-
-    .box {
-        gap: 20px;
-        background: var(--color-primary);
-        border-radius: 10px;
-        padding: 20px;
-        width: 100%;
-        animation: moving 1s ease;
-    }
-
-    .box img {
-        width: 50%;
-        border-radius: 10px;
-    }
-
-    .box h3 {
-        color: #bf43ba;
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
-
-    .box p {
-        color: black;
-        opacity: 0.8;
-        font-size: 1rem;
-    }
-
-    .show {
-        display: flex;
-    }
-
-    .hide {
-        display: none;
-    }
-
-    @keyframes moving {
-        from {
-            transform: translateX(-50px);
-            opacity: 0;
-        }
-
-        to {
-            transform: translateX(0px);
-            opacity: 1;
-        }
-    }
+}
 </style>
 
 <script>
-    const tabs = document.querySelectorAll("[data-id]");
-    const contents = document.querySelectorAll("[data-content]");
-    let id = 0;
+const tabs = document.querySelectorAll("[data-id]");
+const contents = document.querySelectorAll("[data-content]");
+let id = 0;
 
-    tabs.forEach(function(tab) {
-        tab.addEventListener("click", function() {
-            tabs[id].classList.remove("active");
-            tab.classList.add("active");
-            id = tab.getAttribute("data-id");
-            contents.forEach(function(box) {
-                box.classList.add("hide");
-                if (box.getAttribute("data-content") == id) {
-                    box.classList.remove("hide");
-                    box.classList.add("show");
-                }
-            });
+tabs.forEach(function(tab) {
+    tab.addEventListener("click", function() {
+        tabs[id].classList.remove("active");
+        tab.classList.add("active");
+        id = tab.getAttribute("data-id");
+        contents.forEach(function(box) {
+            box.classList.add("hide");
+            if (box.getAttribute("data-content") == id) {
+                box.classList.remove("hide");
+                box.classList.add("show");
+            }
         });
     });
+});
 </script>
 
 

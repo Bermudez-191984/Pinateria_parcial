@@ -21,45 +21,40 @@ class CustomerRequest extends FormRequest
      */
     public function rules(): array
     {
-        if(request()->isMethod('post')){
+        if (request()->isMethod('post')) {
             return [
-            'firstname' => 'required|string|max:255',
-            'secondname' => 'nullable',
-            'lastname' => 'required|string|max:255',
-            'secondlastname' => 'nullable',
-            'age' => 'required|numeric',
-            'email' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:3000',
-                
-            ];	
-        } else if(request()->isMethod('put')){
+                'firstname' => 'required|string|max:255',
+                'secondname' => 'nullable',
+                'lastname' => 'required|string|max:255',
+                'secondlastname' => 'nullable',
+                'age' => 'required|numeric',
+                'email' => 'required|string|max:255',
+                'status' => 'null',
+                'image' => 'nullable|image|mimes:jpg,jpeg,png|max:3000',
+
+            ];
+        } else if (request()->isMethod('put')) {
             return [
 
-                'name'=> 'required|string', //unique:nombre de la tabla,nombre de la fila
-                'document'=> 'required|string',
-                'mail'=> 'nullable|max:255',
-                'address'=> 'required',
-                'phone'=> 'required',
+                'name' => 'required|string', //unique:nombre de la tabla,nombre de la fila
+                'document' => 'required|string',
+                'mail' => 'nullable|max:255',
+                'address' => 'required',
+                'phone' => 'required',
+                'status' => 'null',
                 'image' => 'nullable|image|mimes:jpg,jpeg,png|max:3000',
             ];
+        } else {
+            return [];
         }
-        else{
-            return [
-            ];
-        }
-
-
-
-
-       
     }
 
     public function attributes()
     {
         return [
-			'cutomer_id' => 'customer',
-			
-			
+            'cutomer_id' => 'customer',
+
+
         ];
     }
 }

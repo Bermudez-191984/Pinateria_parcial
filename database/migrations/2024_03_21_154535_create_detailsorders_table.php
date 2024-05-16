@@ -16,19 +16,19 @@ return new class extends Migration
             $table->integer('amount');
             $table->decimal('price', 8, 2);
             $table->decimal('subtotal', 8, 2);
+            $table->string('registerby');
 
             $table->unsignedBigInteger('id_product');
             $table->foreign('id_product')
-            ->references('id')
-            ->on('products');
+                ->references('id')
+                ->on('products');
 
             $table->unsignedBigInteger('id__order');
             $table->foreign('id__order')
-            ->references('id')
-            ->on('_orders');
+                ->references('id')
+                ->on('_orders');
 
             $table->timestamps();
-
         });
     }
 

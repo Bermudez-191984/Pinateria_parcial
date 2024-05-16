@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Crear Clientes')
+@section('title', 'Crear Clientes')
 
 @section('content')
 
@@ -48,49 +48,63 @@
                                                 placeholder=" Segundo Apellido del cliente " autocomplete="off"
                                                 value="{{ old('secondlastname') }}">
 
+                                            <label class="control-label">document <strong
+                                                    style="color:red;">(*)</strong></label>
+                                            <input type="text" class="form-control" name="document"
+                                                placeholder=" Documento del cliente " autocomplete="off"
+                                                value="{{ old('document') }}">
 
                                             <label class="control-label">Age <strong
                                                     style="color:red;">(*)</strong></label>
                                             <input type="text" class="form-control" name="age" placeholder=" Edad "
                                                 autocomplete="off" value="{{ old('age') }}">
-                                            <label class="form-label" for="email">Email</label>
-                                            <input type="email" id="email" name="email"
-                                                class="form-control @error('email') is-invalid @enderror"
-                                                value="{{ old('email') }}" required placeholder="Email"
-                                                autocomplete="email" />
-                                            @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="email">Email</label>
+                                    <input type="email" id="email" name="email"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        value="{{ old('email') }}" required placeholder="Email" autocomplete="email" />
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
 
-
-
-
+                                            <!-- <label class="control-label">Img <strong
+                                                    style="color:red;">(*)</strong></label>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Fotografía</label>
+                                                        <input type="file" class="form-control-file" name="image"
+                                                            id="image">
+                                                    </div>
+                                                </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <input type="hidden" class="form-control" name="estado" value="1">
+                            <input type="hidden" class="form-control" name="registradopor"
+                                value="{{ Auth::user()->id }}">
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-2 col-xs-4">
+                                        <button type="submit"
+                                            class="btn btn-primary btn-block btn-flat">Registrar</button>
+                                    </div>
+                                    <div class="col-lg-2 col-xs-4">
+                                        <a href="{{ route('customer.index') }}"
+                                            class="btn btn-danger btn-block btn-flat">Atras</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-
             </div>
-            <div class="card-footer">
-                <div class="row">
-                    <div class="col-lg-2 col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
-                    </div>
-                    <div class="col-lg-2 col-xs-4">
-                        <a href="{{ route('customer.index') }}" class="btn btn-danger btn-block btn-flat">Atras</a>
-                    </div>
-                </div>
-            </div>
-            </form>
-
         </div>
-</div>
-</div>
-</div>
-</section>
+    </section>
 </div>
 @endsection

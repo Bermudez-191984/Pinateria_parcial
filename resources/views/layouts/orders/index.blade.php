@@ -9,12 +9,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Productos</h1>
+                    <h1>Orden</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Productos</li>
+                        <li class="breadcrumb-item active">Orden</li>
                     </ol>
                 </div>
             </div>
@@ -29,62 +29,47 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Orden del cliente</h3>
-                            {{-- @can('order.create')--}}
+                            <h3 class="card-title">Tabla de Orden</h3>
+                            {{-- @can('product.create')--}}
                             <a href="{{ route('order.create') }}" class="btn btn-primary float-right" title="Nuevo"><i
                                     class="fas fa-plus nav-icon"></i></a>
                             {{--@endcan--}}
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="orders-table" class="table table-bordered table-hover">
+                            <table id="products-table" class="table table-bordered table-hover">
 
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Amount</th>
-                                        <th>Reference</th>
-                                        <th>Price</th>
+                                        <th>customer firtsname</th>
+                                        <th>customer document</th>
+                                        <th>Date Order</th>
+                                        <th>total</th>
                                         <th>estado</th>
-                                        <th>Imagen</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($order as $order)
+                                    @foreach($orders as $order)
+
                                     <tr>
                                         <td>{{$order->id}}</td>
-                                        <td>{{$order->name}}</td>
-                                        <td>{{$order->description}}</td>
-                                        <td>{{$order->amount}}</td>
-                                        <td>{{$order->reference}}</td>
-                                        <td>{{$order->price}}</td>
+                                        <td>{{$order->firstname}}</td>
+                                        <td>{{$order->document}}</td>
+                                        <td>{{$order->dateorder}}</td>
+                                        <td>{{$order->total}}</td>
                                         <td>
-                                            {{-- @can('order.cambioestadoorder')--}}
                                             <input data-id="{{$order->id}}" class="toggle-class" type="checkbox"
                                                 data-onstyle="success" data-offstyle="danger" data-toggle="toggle"
                                                 data-on="Activo" data-off="Inactivo"
-                                                {{ $product->status ? 'checked' : '' }}>
-                                            {{-- @endcan--}}
+                                                {{ $order->status ? 'checked' : '' }}>
                                         </td>
-
-                                        <td> @if($order->image!=null)
-                                            <p><img class="img-responsive img-thumbnail"
-                                                    src="{{ asset('uploads/products/'.$order->image) }}"
-                                                    style="height: 70px; width: 70px; align-items: center;" alt=""></p>
-                                            @elseif ($order->image==null)
-                                            @endif
-                                        </td>
-
-
                                         <td>
-                                            {{--@can('order.edit')--}}
-                                            <a class="btn btn-info btn-sm" href="{{route('order.edit',$order->id)}}"
-                                                title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                            {{--@endcan--}}
-                                            {{--@can('order.destroy)--}}
+                                            <a href="{{ route('order.show', $order) }}" class="btn btn-primary btn-sm"
+                                                title="View bill">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
                                             <form class="d-inline delete-form"
                                                 action="{{ route('order.destroy',$order)}}" method="POST">
                                                 @csrf
@@ -92,12 +77,13 @@
                                                 <button type="submit" class=" btn btn-danger btn-sm" title="Delete">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
-                                                {{--@endcan--}}
                                             </form>
                                         </td>
+                                    </tr>
 
-                                        @endforeach
+                                    @endforeach
                                 </tbody>
+
                             </table>
                         </div>
                     </div>
@@ -108,19 +94,19 @@
                 @push('scripts')
                 <script>
                 $(document).ready(function() {
-                    $("orders-table").DataTable()
+                    $("products-table").DataTable()
                 });
                 $(function() {
                     $('.toggle-class').change(function() {
                         var status = $(this).prop('checked') == true ? 1 : 0;
-                        var product_id = $(this).data('id');
+                        var order_id = $(this).data('id');
                         $.ajax({
                             type: "GET",
                             dataType: "json",
-                            url: 'cambioestadoproduct',
+                            url: 'cambioestadoorder',
                             data: {
                                 'status': status,
-                                'product_id': product_id
+                                'order_id': order_id
                             },
                             success: function(data) {
                                 console.log(data.success)
@@ -179,17 +165,17 @@
                                 "sLast": "Ultimo"
                             },
                             /*"buttons": {
-                              "print": "Imprimir",
-                              "colvis": "Visibilidad Columnas"
-                              /*"create": "Nuevo",
-                              "edit": "Cambiar",
-                              "remove": "Borrar",
-                              "copy": "Copiar",
-                              "csv": "fichero CSV",
-                              "excel": "tabla Excel",
-                              "pdf": "documento PDF",
-                              "collection": "Colección",
-                              "upload": "Seleccione fichero...."
+                                "print": "Imprimir",
+                                "colvis": "Visibilidad Columnas"
+                                /*"create": "Nuevo",
+                                "edit": "Cambiar",
+                                "remove": "Borrar",
+                                "copy": "Copiar",
+                                "csv": "fichero CSV",
+                                "excel": "tabla Excel",
+                                "pdf": "documento PDF",
+                                "collection": "Colección",
+                                "upload": "Seleccione fichero...."
                             }*/
                         }
                     }); //.buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');

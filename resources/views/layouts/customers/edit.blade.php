@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Editar Cliente')
+@section('title', 'Editar productos')
 
 @section('content')
 
@@ -18,7 +18,7 @@
                         <div class="card-header bg-secondary">
                             <h3>@yield('title')</h3>
                         </div>
-                        <form method="POST" action="{{ route('customer.update',$customer) }}">
+                        <form method="POST" action="{{ route('customer.update', $customer) }}">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
@@ -49,6 +49,11 @@
                                                 placeholder=" Segundo Apellido del cliente " autocomplete="off"
                                                 value="{{ $customer->secondlastname }}">
 
+                                            <label class="control-label">document <strong
+                                                    style="color:red;">(*)</strong></label>
+                                            <input type="text" class="form-control" name="document"
+                                                placeholder=" Documento del cliente " autocomplete="off"
+                                                value="{{ $customer->document }}">
 
                                             <label class="control-label">Age <strong
                                                     style="color:red;">(*)</strong></label>
@@ -59,13 +64,13 @@
                                             <input type="text" class="form-control" name="email" placeholder=" email "
                                                 autocomplete="off" value="{{ $customer->email }}">
 
-                                            <!-- <label class="control-label">Img <strong
+                                            <label class="control-label">Img <strong
                                                     style="color:red;"></strong></label>
-                                            <div> @if($customer->image!=null)
+                                            <div>
+                                                @if($customer->image != null)
                                                 <p><img class="img-responsive img-thumbnail"
                                                         src="{{ asset('uploads/customers/'.$customer->image) }}"
                                                         style="height: 70px; width: 70px;" alt=""></p>
-                                                @elseif ($customer->image==null)
                                                 @endif
                                             </div>
 
@@ -78,25 +83,25 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                    <input type="hidden" class="form-control" name="registradopor"
-                                        value="{{ Auth::user()->id }}">
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-xs-4">
-                                            <button type="submit"
-                                                class="btn btn-primary btn-block btn-flat">Registrar</button>
-                                        </div>
-                                        <div class="col-lg-2 col-xs-4">
-                                            <a href="{{ route('customer.index') }}"
-                                                class="btn btn-danger btn-block btn-flat">Atras</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" class="form-control" name="registradopor"
+                                    value="{{ Auth::user()->id }}">
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-lg-2 col-xs-4">
+                                        <button type="submit"
+                                            class="btn btn-primary btn-block btn-flat">Registrar</button>
+                                    </div>
+                                    <div class="col-lg-2 col-xs-4">
+                                        <a href="{{ route('customer.index') }}"
+                                            class="btn btn-danger btn-block btn-flat">Atras</a>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

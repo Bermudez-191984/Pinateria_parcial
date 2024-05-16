@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('_orders', function (Blueprint $table) {
             $table->id();
             $table->decimal('total', 8, 2);
-            $table->string('remark');
+            $table->dateTime('dateorder');
+            $table->string('route')->nullable();
+            $table->string('status');
+            $table->string('registerby');
             $table->unsignedBigInteger('id_customer');
             $table->foreign('id_customer')
-            ->references('id')
-            ->on('customers');
+                ->references('id')
+                ->on('customers');
             $table->timestamps();
         });
     }

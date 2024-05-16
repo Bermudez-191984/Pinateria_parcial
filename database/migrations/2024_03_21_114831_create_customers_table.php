@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('secondlastname')->nullable();
             $table->integer('age');
             $table->string('email');
+            $table->string('document');
             $table->string('image')->nullable();
+            $table->string('status');
+            $table->string('registerby');
             $table->timestamps();
         });
     }

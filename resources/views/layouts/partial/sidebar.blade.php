@@ -1,6 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-5" style="background-color: #FADAF8; color: black;">
     <a class="brand-link" style="text-decoration: none;">
-        <img src="{{asset('backend\dist\img\Logo1.jpeg')}}" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{asset('backend\dist\img\Logo1.jpeg')}}" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
         <span class="brand-text font-weight-light" style="color: black;">MundoColor</span>
     </a>
 
@@ -10,7 +11,8 @@
         <!-- SidebarSearch Form -->
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" style="background-color: white; color: black;">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search"
+                    style="background-color: white; color: black;">
                 <div class="input-group-append">
                     <button class="btn btn-sidebar">
                         <i class="fas fa-search fa-fw"></i>

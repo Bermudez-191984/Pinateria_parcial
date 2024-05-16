@@ -9,12 +9,12 @@ class _Order extends Model
 {
     use HasFactory;
     protected $table = "_orders";
-    protected $fillable = ['total','remark'];
-    protected $guarded = ['id','created_at', 'updated_at'];
+    protected $fillable = ['total', 'dateorder', 'status', 'registerby', 'id_customer', 'route'];
+    protected $guarded = ['id', 'created_at', 'updated_at', 'status', 'registerby'];
+
 
     public function details_orders()
     {
-    return $this->hasMany(DetailOrder::class);
+        return $this->hasMany(DetailOrder::class);
     }
-
 }

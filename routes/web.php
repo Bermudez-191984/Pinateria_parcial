@@ -60,4 +60,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('customer', CustomerController::class);
     Route::resource('order', OrderController::class);
     Route::get('cambioestadoproduct', [ProductController::class, 'cambioestadoproduct'])->name('cambioestadoproduct');
+    Route::get('cambioestadocustomer', [CustomerController::class, 'cambioestadocustomer'])->name('cambioestadocustomer');
+    Route::get('cambioestadoorder', [OrderController::class, 'cambioestadoorder'])->name('cambioestadoorder');
+    Route::get('/calendar', function () {
+        return view('calendar');
+    })->name('calendar');
 });
